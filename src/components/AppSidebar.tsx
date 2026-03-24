@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/sidebar";
 import { useLocation, Link } from "react-router-dom";
 import {
-  LayoutDashboard,
   Tag,
   Search,
   Package,
