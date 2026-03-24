@@ -84,7 +84,7 @@ function uniqueSorted(arr: string[]): string[] {
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
-const PLATFORMS = ["Blinkit", "Zepto", "Swiggy Instamart", "BigBasket Now"];
+const PLATFORMS = ["Blinkit", "Flipkart Minutes", "Swiggy Instamart", "Zepto"];
 
 const CompetitiveEvents = () => {
   const filters = useOutletContext<GlobalFilters>();
@@ -449,7 +449,7 @@ const CompetitiveEvents = () => {
                       const isSelected = selectedEvent === e;
 
                       // ── Display label + left-border override ──────────────
-                      const COMPETITOR_PLATFORMS = ["Blinkit", "Swiggy Instamart", "BigBasket Now"];
+                      const COMPETITOR_PLATFORMS = ["Blinkit", "Swiggy Instamart", "Zepto"];
                       const isSelectionGap = e.event_type === "Selection Gap";
                       const isCompetitorStockout =
                         e.event_type === "Critical Stockout" &&

@@ -29,7 +29,7 @@ const CONDITIONS = [
   "falls below threshold",
 ];
 
-const PLATFORMS = ["All Platforms", "Zepto", "Blinkit", "Swiggy Instamart", "BigBasket Now"];
+const PLATFORMS = ["All Platforms", "Flipkart Minutes", "Blinkit", "Swiggy Instamart", "Zepto"];
 const CITIES = ["All Cities", "Bangalore", "Mumbai", "Delhi NCR", "Pune", "Hyderabad"];
 const CATEGORIES = [
   "All Categories",
@@ -56,10 +56,10 @@ export interface AlertRule {
 const SIMULATED_TRIGGERS: Record<string, string> = {
   "Promotion Share": "2h ago — Blinkit +32% promo rate in Bangalore",
   "Avg Discount Depth": "4h ago — Swiggy Instamart avg discount rose to 18.4%",
-  "SKU Availability Rate": "1d ago — BigBasket Now dropped to 76% availability",
-  "Top-10 Presence": "3h ago — Zepto fell to 38% Top-10 presence",
+  "SKU Availability Rate": "1d ago — Zepto dropped to 76% availability",
+  "Top-10 Presence": "3h ago — Flipkart Minutes fell to 38% Top-10 presence",
   "Top-3 Search Share": "6h ago — Blinkit gained 12% elite positions",
-  "Stockout Rate": "45m ago — Zepto stockout spike in Delhi NCR",
+  "Stockout Rate": "45m ago — Flipkart Minutes stockout spike in Delhi NCR",
 };
 
 interface Props {

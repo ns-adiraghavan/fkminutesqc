@@ -194,12 +194,12 @@ export const availabilityKPIs = [
     tooltip: "Platform's ability to fulfill demand for tracked SKUs.",
   },
   {
-    title: "Zepto Availability",
+    title: "Flipkart Minutes Availability",
     value: "97.1%",
     change: 0.2,
     trend: "up" as const,
     status: "low" as const,
-    tooltip: "SKU availability rate on Zepto across all monitored cities.",
+    tooltip: "SKU availability rate on Flipkart Minutes across all monitored cities.",
   },
 ];
 
@@ -245,37 +245,37 @@ export const platformHeatmapData = [
   {
     category: "Fruits & Vegetables",
     competitors: [
-      { name: "Zepto", competitiveness: 88, priceGap: -2.1, ourPrice: "₹45", theirPrice: "₹44", lastUpdated: "2024-01-30T14:30:00Z", skuCount: 210 },
+      { name: "Flipkart Minutes", competitiveness: 88, priceGap: -2.1, ourPrice: "₹45", theirPrice: "₹44", lastUpdated: "2024-01-30T14:30:00Z", skuCount: 210 },
       { name: "Blinkit", competitiveness: 74, priceGap: 5.3, ourPrice: "₹45", theirPrice: "₹47", lastUpdated: "2024-01-30T12:15:00Z", skuCount: 198 },
       { name: "Swiggy Instamart", competitiveness: 65, priceGap: 8.7, ourPrice: "₹45", theirPrice: "₹49", lastUpdated: "2024-01-30T16:45:00Z", skuCount: 176 },
-      { name: "BigBasket Now", competitiveness: 81, priceGap: 1.2, ourPrice: "₹45", theirPrice: "₹45", lastUpdated: "2024-01-30T13:22:00Z", skuCount: 240 },
+      { name: "Zepto", competitiveness: 81, priceGap: 1.2, ourPrice: "₹45", theirPrice: "₹45", lastUpdated: "2024-01-30T13:22:00Z", skuCount: 240 },
     ],
   },
   {
     category: "Dairy & Eggs",
     competitors: [
-      { name: "Zepto", competitiveness: 76, priceGap: 3.4, ourPrice: "₹62", theirPrice: "₹64", lastUpdated: "2024-01-30T15:10:00Z", skuCount: 88 },
+      { name: "Flipkart Minutes", competitiveness: 76, priceGap: 3.4, ourPrice: "₹62", theirPrice: "₹64", lastUpdated: "2024-01-30T15:10:00Z", skuCount: 88 },
       { name: "Blinkit", competitiveness: 44, priceGap: 15.2, ourPrice: "₹62", theirPrice: "₹71", lastUpdated: "2024-01-30T11:30:00Z", skuCount: 74 },
       { name: "Swiggy Instamart", competitiveness: 85, priceGap: -1.8, ourPrice: "₹62", theirPrice: "₹61", lastUpdated: "2024-01-30T17:05:00Z", skuCount: 95 },
-      { name: "BigBasket Now", competitiveness: 70, priceGap: 4.6, ourPrice: "₹62", theirPrice: "₹65", lastUpdated: "2024-01-30T14:18:00Z", skuCount: 102 },
+      { name: "Zepto", competitiveness: 70, priceGap: 4.6, ourPrice: "₹62", theirPrice: "₹65", lastUpdated: "2024-01-30T14:18:00Z", skuCount: 102 },
     ],
   },
   {
     category: "Snacks & Beverages",
     competitors: [
-      { name: "Zepto", competitiveness: 93, priceGap: -5.2, ourPrice: "₹120", theirPrice: "₹114", lastUpdated: "2024-01-30T16:20:00Z", skuCount: 430 },
+      { name: "Flipkart Minutes", competitiveness: 93, priceGap: -5.2, ourPrice: "₹120", theirPrice: "₹114", lastUpdated: "2024-01-30T16:20:00Z", skuCount: 430 },
       { name: "Blinkit", competitiveness: 37, priceGap: 22.1, ourPrice: "₹120", theirPrice: "₹146", lastUpdated: "2024-01-30T10:45:00Z", skuCount: 310 },
       { name: "Swiggy Instamart", competitiveness: 78, priceGap: 2.9, ourPrice: "₹120", theirPrice: "₹123", lastUpdated: "2024-01-30T15:55:00Z", skuCount: 390 },
-      { name: "BigBasket Now", competitiveness: 62, priceGap: 9.4, ourPrice: "₹120", theirPrice: "₹131", lastUpdated: "2024-01-30T12:40:00Z", skuCount: 280 },
+      { name: "Zepto", competitiveness: 62, priceGap: 9.4, ourPrice: "₹120", theirPrice: "₹131", lastUpdated: "2024-01-30T12:40:00Z", skuCount: 280 },
     ],
   },
   {
     category: "Personal Care",
     competitors: [
-      { name: "Zepto", competitiveness: 58, priceGap: 12.3, ourPrice: "₹220", theirPrice: "₹247", lastUpdated: "2024-01-30T13:55:00Z", skuCount: 560 },
+      { name: "Flipkart Minutes", competitiveness: 58, priceGap: 12.3, ourPrice: "₹220", theirPrice: "₹247", lastUpdated: "2024-01-30T13:55:00Z", skuCount: 560 },
       { name: "Blinkit", competitiveness: 24, priceGap: 45.7, ourPrice: "₹220", theirPrice: "₹321", lastUpdated: "2024-01-30T09:30:00Z", skuCount: 390 },
       { name: "Swiggy Instamart", competitiveness: 82, priceGap: -0.5, ourPrice: "₹220", theirPrice: "₹219", lastUpdated: "2024-01-30T16:10:00Z", skuCount: 480 },
-      { name: "BigBasket Now", competitiveness: 89, priceGap: -3.1, ourPrice: "₹220", theirPrice: "₹213", lastUpdated: "2024-01-30T14:35:00Z", skuCount: 520 },
+      { name: "Zepto", competitiveness: 89, priceGap: -3.1, ourPrice: "₹220", theirPrice: "₹213", lastUpdated: "2024-01-30T14:35:00Z", skuCount: 520 },
     ],
   },
 ];
@@ -372,8 +372,8 @@ export const platformAlertsData = [
   {
     id: "2",
     type: "inventory" as const,
-    title: "Zepto — Stockout in Delhi NCR",
-    description: "32 dairy SKUs are out of stock on Zepto in Delhi NCR, up from 12 yesterday.",
+    title: "Flipkart Minutes — Stockout in Delhi NCR",
+    description: "32 dairy SKUs are out of stock on Flipkart Minutes in Delhi NCR, up from 12 yesterday.",
     severity: "high" as const,
     timestamp: "22 minutes ago",
     date: "2024-01-30",
@@ -396,13 +396,13 @@ export const platformAlertsData = [
   {
     id: "4",
     type: "competitor" as const,
-    title: "BigBasket Now — New Exclusive Listings",
-    description: "BigBasket Now added 45 exclusive private-label SKUs in Staples & Grains this week.",
+    title: "Zepto — New Exclusive Listings",
+    description: "Zepto added 45 exclusive private-label SKUs in Staples & Grains this week.",
     severity: "medium" as const,
     timestamp: "3 hours ago",
     date: "2024-01-30",
     category: "Staples & Grains",
-    competitor: "BigBasket Now",
+    competitor: "Zepto",
     affectedSKUs: 45,
   },
   {
