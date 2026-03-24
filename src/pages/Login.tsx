@@ -76,7 +76,6 @@ const Login = () => {
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-3 leading-tight">
-            Quick-Commerce{" "}
             <span className="text-primary">Intelligence Platform</span>
           </h1>
           <p className="text-sm text-muted-foreground leading-relaxed">
