@@ -18,7 +18,7 @@ import { Layers, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { datasets, applyFilters, type GlobalFilters } from "@/data/dataLoader";
 
-const PLATFORMS = ["Zepto", "Blinkit", "Swiggy Instamart", "BigBasket Now"] as const;
+const PLATFORMS = ["Flipkart Minutes", "Blinkit", "Swiggy Instamart", "Zepto"] as const;
 
 interface Props {
   filters: Partial<GlobalFilters>;
