@@ -86,7 +86,7 @@ export function SentimentStackedBar({ data, height = 230 }: SentimentBarProps) {
         <XAxis dataKey="name" tick={AXIS_TICK} angle={-40} textAnchor="end" interval={0} />
         <YAxis tick={AXIS_TICK} tickFormatter={(v) => `${v}%`} />
         <Tooltip {...TOOLTIP_STYLE} formatter={(v: number) => [`${v}%`]} />
-        <Legend wrapperStyle={{ fontSize: 11, color: "#94a3b8" }} />
+        <Legend verticalAlign="top" wrapperStyle={{ fontSize: 11, color: "#94a3b8", paddingBottom: 8 }} />
         <Bar dataKey="Negative" stackId="s" fill={SENTIMENT_PALETTE.Negative} />
         <Bar dataKey="Neutral"  stackId="s" fill={SENTIMENT_PALETTE.Neutral} />
         <Bar dataKey="Positive" stackId="s" fill={SENTIMENT_PALETTE.Positive} radius={[3, 3, 0, 0]} />
@@ -114,7 +114,7 @@ export function RatingStackedBar({ data, height = 230 }: RatingBarProps) {
         <XAxis dataKey="name" tick={AXIS_TICK} angle={-40} textAnchor="end" interval={0} />
         <YAxis tick={AXIS_TICK} tickFormatter={(v) => `${v}%`} />
         <Tooltip {...TOOLTIP_STYLE} formatter={(v: number) => [`${v}%`]} />
-        <Legend wrapperStyle={{ fontSize: 11, color: "#94a3b8" }} />
+        <Legend verticalAlign="top" wrapperStyle={{ fontSize: 11, color: "#94a3b8", paddingBottom: 8 }} />
         <Bar dataKey="1★" stackId="r" fill={RATING_PALETTE["1★"]} />
         <Bar dataKey="2★" stackId="r" fill={RATING_PALETTE["2★"]} />
         <Bar dataKey="3★" stackId="r" fill={RATING_PALETTE["3★"]} />
