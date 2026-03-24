@@ -237,7 +237,6 @@ const AssortmentIntelligence = () => {
         </Card>
       </section>
 
-      <CrossPlatformSelectionBenchmarking filters={filters} />
     </div>
   );
 };
