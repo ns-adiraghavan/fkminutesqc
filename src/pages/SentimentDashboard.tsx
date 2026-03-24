@@ -111,6 +111,7 @@ function PlatformContent({ platformId, platformColor }: { platformId: string; pl
 // ── Main page ──────────────────────────────────────────────────────────────
 
 export default function SentimentDashboard() {
+  const navigate = useNavigate();
   const [activePlatform, setActivePlatform] = useState("Flipkart");
   const current = PLATFORMS.find(p => p.id === activePlatform)!;
 
@@ -119,9 +120,14 @@ export default function SentimentDashboard() {
       {/* Header */}
       <div className="border-b border-white/10 bg-slate-900/80 backdrop-blur-md sticky top-0 z-20">
         <div className="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div>
-            <h1 className="text-xl font-bold tracking-tight">Review & Sentiment Intelligence</h1>
-            <p className="text-xs text-slate-500 mt-0.5">Apparel · Jan 2025 – Jan 2026 · 8 Brands</p>
+          <div className="flex items-center gap-4">
+            <button onClick={() => navigate("/")} className="shrink-0 hover:opacity-75 transition-opacity">
+              <img src={logoWhite} alt="Netscribes" className="h-7 w-auto object-contain" />
+            </button>
+            <div>
+              <h1 className="text-xl font-bold tracking-tight">Review & Sentiment Intelligence</h1>
+              <p className="text-xs text-slate-500 mt-0.5">Apparel · Jan 2025 – Jan 2026 · 8 Brands</p>
+            </div>
           </div>
           {/* Platform tabs */}
           <div className="flex gap-1 bg-slate-800 p-1 rounded-xl">
