@@ -29,7 +29,7 @@ const MODULES = [
   },
   {
     icon: Package,
-    label: "Assortment Intelligence",
+    label: "Selection Gap Intelligence",
     path: "/dashboard/assortment",
     kpis: ["SKU Coverage %", "Listed SKUs", "Missing SKUs", "Categories Covered"],
     description: "Analyse SKU breadth, coverage gaps, and platform-exclusive listings by category.",

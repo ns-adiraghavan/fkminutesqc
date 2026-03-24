@@ -41,7 +41,7 @@ const PAGE_LABELS: Record<string, string> = {
   "/dashboard": "Competitive Overview",
   "/dashboard/pricing": "Pricing & Promotions",
   "/dashboard/search": "Search & Shelf Visibility",
-  "/dashboard/assortment": "Assortment Intelligence",
+  "/dashboard/assortment": "Selection Gap Intelligence",
   "/dashboard/availability": "Availability Intelligence",
   "/dashboard/local": "Local Market Intelligence",
   "/dashboard/events": "Competitive Events",
