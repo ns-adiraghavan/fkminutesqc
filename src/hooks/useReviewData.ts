@@ -130,7 +130,7 @@ export function useReviewData(platform: string): PlatformData {
       try {
         const pSlug = slugPlatform(platform);
         const promises = BRANDS.map(b =>
-          fetchGzip(`/data/sentiments%20data/${pSlug}_${slugBrand(b)}.json.gz`)
+          fetchGzip(`/data/sentiments-data/${pSlug}_${slugBrand(b)}.json.gz`)
         );
         const results = await Promise.all(promises);
         if (cancelled) return;
