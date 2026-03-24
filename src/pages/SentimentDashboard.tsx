@@ -4,6 +4,7 @@
 // sub-page tabs: Topic Pulse | Brand Scorecard | Category Lens | Review Intelligence
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useReviewData } from "@/hooks/useReviewData";
 import {
   TopicPulsePage,
@@ -12,6 +13,7 @@ import {
   ReviewIntelligencePage,
 } from "@/components/dashboard/DashboardPages";
 import { Loader2, AlertCircle } from "lucide-react";
+import logoWhite from "@/assets/netscribes-logo-white.png";
 
 // ── Platform config ────────────────────────────────────────────────────────
 
