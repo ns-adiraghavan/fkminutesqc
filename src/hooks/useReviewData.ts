@@ -11,6 +11,7 @@
 //   category_1, category_2 (Men/Women/Unisex), category_3 (minor cat), platform
 
 import { useState, useEffect } from "react";
+import pako from "pako";
 
 export type Sentiment = "Positive" | "Neutral" | "Negative";
 
