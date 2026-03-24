@@ -81,8 +81,8 @@ function computeStatuses(
 }
 
 function isGap(statuses: Record<string, StatusKey>): boolean {
-  if (statuses["Zepto"] !== "not_listed") return false;
-  return PLATFORMS.filter((p) => p !== "Zepto" && statuses[p] === "in_stock").length >= 2;
+  if (statuses["Flipkart Minutes"] !== "not_listed") return false;
+  return PLATFORMS.filter((p) => p !== "Flipkart Minutes" && statuses[p] === "in_stock").length >= 2;
 }
 
 export function CrossPlatformSelectionBenchmarking({ filters }: Props) {
