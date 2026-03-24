@@ -18,7 +18,7 @@ import { Layers, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { datasets, applyFilters, type GlobalFilters } from "@/data/dataLoader";
 
-const PLATFORMS = ["Zepto", "Blinkit", "Swiggy Instamart", "BigBasket Now"] as const;
+const PLATFORMS = ["Flipkart Minutes", "Blinkit", "Swiggy Instamart", "Zepto"] as const;
 
 interface Props {
   filters: Partial<GlobalFilters>;
@@ -81,8 +81,8 @@ function computeStatuses(
 }
 
 function isGap(statuses: Record<string, StatusKey>): boolean {
-  if (statuses["Zepto"] !== "not_listed") return false;
-  return PLATFORMS.filter((p) => p !== "Zepto" && statuses[p] === "in_stock").length >= 2;
+  if (statuses["Flipkart Minutes"] !== "not_listed") return false;
+  return PLATFORMS.filter((p) => p !== "Flipkart Minutes" && statuses[p] === "in_stock").length >= 2;
 }
 
 export function CrossPlatformSelectionBenchmarking({ filters }: Props) {

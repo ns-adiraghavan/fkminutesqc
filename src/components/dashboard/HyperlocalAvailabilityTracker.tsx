@@ -18,7 +18,7 @@ import { MapPin, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { datasets, applyFilters, type GlobalFilters } from "@/data/dataLoader";
 
-const PLATFORMS = ["Zepto", "Blinkit", "Swiggy Instamart", "BigBasket Now"] as const;
+const PLATFORMS = ["Flipkart Minutes", "Blinkit", "Swiggy Instamart", "Zepto"] as const;
 
 interface Props {
   filters: Partial<GlobalFilters>;
@@ -66,13 +66,13 @@ function buildTableRows(
   }
 
   return Object.values(locationMap).map(({ city, pincode, platforms }) => {
-    const zeptoStatus = platforms["Zepto"] ?? null;
-    const competitorOutOfStock = PLATFORMS.some((p) => p !== "Zepto" && platforms[p] === "out_of_stock");
+    const fkStatus = platforms["Flipkart Minutes"] ?? null;
+    const competitorOutOfStock = PLATFORMS.some((p) => p !== "Flipkart Minutes" && platforms[p] === "out_of_stock");
     return {
       city,
       pincode,
       statuses: platforms as Record<string, AvailStatus>,
-      isIntercept: zeptoStatus === "in_stock" && competitorOutOfStock,
+      isIntercept: fkStatus === "in_stock" && competitorOutOfStock,
     };
   });
 }
@@ -84,6 +84,7 @@ function hasInterceptOpportunity(
 ): boolean {
   return buildTableRows(skuId, availData).some((r) => r.isIntercept);
 }
+
 
 export function HyperlocalAvailabilityTracker({ filters }: Props) {
   const categories = useMemo(
@@ -168,7 +169,7 @@ export function HyperlocalAvailabilityTracker({ filters }: Props) {
               <CardTitle>Hyperlocal Availability Tracker</CardTitle>
               <CardDescription>
                 Track per-pincode availability across platforms for a selected SKU — identify
-                pincodes where Zepto is in stock while competitors are out
+                pincodes where Flipkart Minutes is in stock while competitors are out
               </CardDescription>
             </div>
           </div>
@@ -338,7 +339,7 @@ export function HyperlocalAvailabilityTracker({ filters }: Props) {
             </div>
             <div className="flex items-center gap-1.5">
               <span className="inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-2 py-0.5 text-primary text-[10px] font-medium">🚀 Intercept Opportunity</span>
-              <span>Zepto in stock, ≥1 competitor out</span>
+              <span>Flipkart Minutes in stock, ≥1 competitor out</span>
             </div>
           </div>
         </CardContent>

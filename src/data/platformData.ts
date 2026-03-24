@@ -1,7 +1,7 @@
 // Public Data Intelligence platform data
 // Platforms and cities for quick-commerce competitive intelligence
 
-export const platforms = ["Zepto", "Blinkit", "Swiggy Instamart", "BigBasket Now"] as const;
+export const platforms = ["Flipkart Minutes", "Blinkit", "Swiggy Instamart", "Zepto"] as const;
 export type Platform = typeof platforms[number];
 
 export const cities = ["Bangalore", "Mumbai", "Delhi NCR", "Pune", "Hyderabad"] as const;

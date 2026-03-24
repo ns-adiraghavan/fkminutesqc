@@ -27,7 +27,7 @@ import { cn } from "@/lib/utils";
 import { StrategicInsightsPanel, type Insight } from "@/components/dashboard/StrategicInsightsPanel";
 import { PageControlBar } from "@/components/dashboard/PageControlBar";
 
-const PLATFORMS = ["Zepto", "Blinkit", "Swiggy Instamart", "BigBasket Now"];
+const PLATFORMS = ["Flipkart Minutes", "Blinkit", "Swiggy Instamart", "Zepto"];
 
 // ─── Price gap helpers ────────────────────────────────────────────────────────
 function computePriceGapByPlatform(

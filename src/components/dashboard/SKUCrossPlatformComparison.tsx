@@ -17,7 +17,7 @@ import {
 import { ArrowLeftRight, MapPin, TrendingUp, TrendingDown, Minus } from "lucide-react";
 import { datasets, applyFilters, type GlobalFilters } from "@/data/dataLoader";
 
-const PLATFORMS = ["Zepto", "Blinkit", "Swiggy Instamart", "BigBasket Now"];
+const PLATFORMS = ["Flipkart Minutes", "Blinkit", "Swiggy Instamart", "Zepto"];
 
 interface Props {
   filters: Partial<GlobalFilters>;
