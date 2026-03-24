@@ -49,7 +49,7 @@ function PlatformContent({ platformId, platformColor }: { platformId: string; pl
       <div className="flex flex-col items-center justify-center py-32 gap-3">
         <AlertCircle className="w-10 h-10 text-red-500" />
         <p className="text-red-400 text-sm">Failed to load data: {error}</p>
-        <p className="text-slate-500 text-xs">Make sure the .json.gz files are in <code>public/data/</code></p>
+        <p className="text-slate-500 text-xs">Make sure the .json.gz files are in <code>public/data/sentiment data/</code></p>
       </div>
     );
   }
