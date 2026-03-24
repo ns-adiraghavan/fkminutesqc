@@ -124,6 +124,8 @@ const AssortmentIntelligence = () => {
         return <StrategicInsightsPanel insights={insights} />;
       })()}
 
+      <CrossPlatformSelectionBenchmarking filters={filters} />
+
       <section className="space-y-2">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Category Assortment Coverage</h2>
         <Card className="bg-gradient-card">
@@ -235,7 +237,6 @@ const AssortmentIntelligence = () => {
         </Card>
       </section>
 
-      <CrossPlatformSelectionBenchmarking filters={filters} />
     </div>
   );
 };
