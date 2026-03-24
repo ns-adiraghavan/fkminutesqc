@@ -169,7 +169,7 @@ export function HyperlocalAvailabilityTracker({ filters }: Props) {
               <CardTitle>Hyperlocal Availability Tracker</CardTitle>
               <CardDescription>
                 Track per-pincode availability across platforms for a selected SKU — identify
-                pincodes where Zepto is in stock while competitors are out
+                pincodes where Flipkart Minutes is in stock while competitors are out
               </CardDescription>
             </div>
           </div>
@@ -339,7 +339,7 @@ export function HyperlocalAvailabilityTracker({ filters }: Props) {
             </div>
             <div className="flex items-center gap-1.5">
               <span className="inline-flex items-center rounded-full border border-primary/25 bg-primary/10 px-2 py-0.5 text-primary text-[10px] font-medium">🚀 Intercept Opportunity</span>
-              <span>Zepto in stock, ≥1 competitor out</span>
+              <span>Flipkart Minutes in stock, ≥1 competitor out</span>
             </div>
           </div>
         </CardContent>
