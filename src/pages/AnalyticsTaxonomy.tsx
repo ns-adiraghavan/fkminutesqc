@@ -105,34 +105,34 @@ const KPIS: KPI[] = [
     module: "Search & Shelf Visibility",
   },
 
-  // ── Assortment Intelligence ───────────────────────────────────────────────────
+  // ── Selection Gap Intelligence ───────────────────────────────────────────────────
   {
     name: "SKU Coverage",
     formula: "COUNT(distinct sku_id where listing_status = 1) per platform-category",
     dataset: "assortment_tracking",
-    usedIn: ["Assortment Intelligence"],
-    module: "Assortment Intelligence",
+    usedIn: ["Selection Gap Intelligence"],
+    module: "Selection Gap Intelligence",
   },
   {
     name: "Listing Rate",
     formula: "COUNT(listing_status = 1) / COUNT(total SKU-platform combos) × 100",
     dataset: "assortment_tracking",
-    usedIn: ["Assortment Intelligence"],
-    module: "Assortment Intelligence",
+    usedIn: ["Selection Gap Intelligence"],
+    module: "Selection Gap Intelligence",
   },
   {
     name: "Category Assortment Depth",
     formula: "COUNT(distinct sku_id listed) within a category per platform",
     dataset: "assortment_tracking",
-    usedIn: ["Assortment Intelligence"],
-    module: "Assortment Intelligence",
+    usedIn: ["Selection Gap Intelligence"],
+    module: "Selection Gap Intelligence",
   },
   {
     name: "Platform Exclusive SKUs",
     formula: "COUNT(sku_id listed on exactly 1 platform) / COUNT(total SKUs) × 100",
     dataset: "assortment_tracking",
-    usedIn: ["Assortment Intelligence"],
-    module: "Assortment Intelligence",
+    usedIn: ["Selection Gap Intelligence"],
+    module: "Selection Gap Intelligence",
   },
 
   // ── Availability Intelligence ─────────────────────────────────────────────────
@@ -179,7 +179,7 @@ const MODULE_COLORS: Record<string, string> = {
   "Competitive Overview":            "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20",
   "Pricing & Promotion Intelligence":"bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20",
   "Search & Shelf Visibility":       "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20",
-  "Assortment Intelligence":         "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
+  "Selection Gap Intelligence":         "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20",
   "Availability Intelligence":       "bg-rose-500/10 text-rose-600 dark:text-rose-400 border-rose-500/20",
   "Local Market Intelligence":       "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border-cyan-500/20",
 };
