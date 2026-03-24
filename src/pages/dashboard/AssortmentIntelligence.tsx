@@ -116,7 +116,7 @@ const AssortmentIntelligence = () => {
         const insights: Insight[] = [
           skuLeader ? { icon: "package", title: "SKU Coverage Leader", body: `${skuLeader.platform} has the broadest assortment with ${skuLeader.total.toLocaleString()} listed SKUs.`, type: "positive" }
             : { icon: "package", title: "SKU Coverage Leader", body: "No listing data available.", type: "neutral" },
-          worstCatGap ? { icon: "trend-down", title: "Category Assortment Gap", body: `Zepto carries ${worstCatGap.zepto} SKUs in ${worstCatGap.cat} versus a competitor average of ${worstCatGap.compAvg.toFixed(0)} — the widest assortment gap.`, type: "warning" }
+          worstCatGap ? { icon: "trend-down", title: "Category Assortment Gap", body: `Flipkart Minutes carries ${worstCatGap.zepto} SKUs in ${worstCatGap.cat} versus a competitor average of ${worstCatGap.compAvg.toFixed(0)} — the widest assortment gap.`, type: "warning" }
             : { icon: "trend-down", title: "Category Assortment Gap", body: "No gap data available.", type: "neutral" },
           deepestCat ? { icon: "chart", title: "Assortment Depth", body: `${deepestCat.category} has the highest total SKU listings across platforms (${deepestCat.total.toLocaleString()} listings).`, type: "positive" }
             : { icon: "chart", title: "Assortment Depth", body: "No depth data available.", type: "neutral" },

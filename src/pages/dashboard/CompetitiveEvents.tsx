@@ -84,7 +84,7 @@ function uniqueSorted(arr: string[]): string[] {
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
-const PLATFORMS = ["Blinkit", "Zepto", "Swiggy Instamart", "BigBasket Now"];
+const PLATFORMS = ["Blinkit", "Flipkart Minutes", "Swiggy Instamart", "Zepto"];
 
 const CompetitiveEvents = () => {
   const filters = useOutletContext<GlobalFilters>();
