@@ -34,7 +34,7 @@ const App = () => (
               <Route path="/" element={<Landing />} />
               <Route path="/login" element={<Login />} />
               <Route path="/dashboard" element={<DashboardLayout />}>
-                <Route index element={<CompetitiveOverview />} />
+                <Route index element={<AssortmentIntelligence />} />
                 <Route path="pricing" element={<PricingPromoIntelligence />} />
                 <Route path="search" element={<SearchShelfVisibility />} />
                 <Route path="assortment" element={<AssortmentIntelligence />} />
