@@ -77,7 +77,7 @@ const AssortmentIntelligence = () => {
           <Package className="h-5 w-5 text-white" />
         </div>
         <div>
-          <h1 className="text-xl font-bold">Assortment & Product Mix Intelligence</h1>
+          <h1 className="text-xl font-bold">Selection Gap & Product Mix Intelligence</h1>
           <p className="text-sm text-muted-foreground">Analyse SKU breadth, exclusive listings, and product mix gaps across platforms</p>
         </div>
       </div>
