@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 const MODULES = [
   {
     id: "dashboard",
-    path: "/login?redirect=/dashboard",
+    path: "/login?redirect=/dashboard/assortment",
     icon: BarChart2,
     label: "Selection Gap Intelligence",
     tagline: "Track stockouts, fill rates and inventory gaps across platforms and cities.",

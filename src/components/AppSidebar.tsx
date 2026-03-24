@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/sidebar";
 import { useLocation, Link } from "react-router-dom";
 import {
-  LayoutDashboard,
   Tag,
   Search,
   Package,
@@ -47,9 +46,9 @@ const navItems = [
     icon: Search,
   },
   {
-    title: "Competitor Pulse",
-    url: "/dashboard",
-    icon: LayoutDashboard,
+    title: "Competitor Events",
+    url: "/dashboard/events",
+    icon: Activity,
   },
   {
     title: "Pricing Intelligence",
@@ -60,11 +59,6 @@ const navItems = [
     title: "Local Market Intelligence",
     url: "/dashboard/local",
     icon: MapPin,
-  },
-  {
-    title: "Competitor Events",
-    url: "/dashboard/events",
-    icon: Activity,
   },
 ];
 
