@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 const MODULES = [
   {
     id: "dashboard",
-    path: "/dashboard",
+    path: "/login?redirect=/dashboard",
     icon: BarChart2,
     label: "Selection Gap Intelligence",
     tagline: "Track stockouts, fill rates and inventory gaps across platforms and cities.",
@@ -18,7 +18,7 @@ const MODULES = [
   },
   {
     id: "sentiment",
-    path: "/sentiment",
+    path: "/login?redirect=/sentiment",
     icon: Star,
     label: "Review & Sentiment Intelligence",
     tagline: "Analyse customer reviews, ratings and topic trends across platforms and brands.",
@@ -94,7 +94,7 @@ export default function Landing() {
       </div>
 
       <p className="mt-12 text-xs text-slate-600">
-        Data: Jan 2025 – Jan 2026 · Indian E-Commerce Apparel · Synthetic Dataset
+        Prepared for Flipkart. March 2026.
       </p>
     </div>
   );
