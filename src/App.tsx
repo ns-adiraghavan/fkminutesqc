@@ -18,6 +18,7 @@ import CompetitiveEvents from "./pages/dashboard/CompetitiveEvents";
 import AnalyticsTaxonomy from "./pages/AnalyticsTaxonomy";
 import ManageDatasets from "./pages/ManageDatasets";
 import NotFound from "./pages/NotFound";
+import SentimentDashboard from "./pages/SentimentDashboard";
 
 const queryClient = new QueryClient();
 
