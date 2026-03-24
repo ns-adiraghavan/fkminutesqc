@@ -1,7 +1,7 @@
 // src/hooks/useReviewData.ts
 
-// Loads all brand files for a given platform from public/data/sentiment data
-// Files expected: public/data/sentiment data/{platform}_{brand}.json.gz
+// Loads all brand files for a given platform from public/data/sentiments-data
+// Files expected: public/data/sentiments-data/{platform}_{brand}.json.gz
 // Each file = array of review records (see schema below)
 //
 // Schema per record:
@@ -11,6 +11,7 @@
 //   category_1, category_2 (Men/Women/Unisex), category_3 (minor cat), platform
 
 import { useState, useEffect } from "react";
+import pako from "pako";
 
 export type Sentiment = "Positive" | "Neutral" | "Negative";
 
@@ -97,23 +98,19 @@ function computeStats(records: ReviewRecord[], groupKey: keyof ReviewRecord): Gr
 async function fetchGzip(url: string): Promise<ReviewRecord[]> {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
-  const buf = await res.arrayBuffer();
-  const ds = new DecompressionStream("gzip");
-  const writer = ds.writable.getWriter();
-  writer.write(buf);
-  writer.close();
-  const reader = ds.readable.getReader();
-  const chunks: Uint8Array[] = [];
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    chunks.push(value);
+  const buffer = await res.arrayBuffer();
+  const bytes = new Uint8Array(buffer);
+
+  let text: string;
+  try {
+    // Primary: raw gzip bytes on disk → pako decompresses
+    text = pako.inflate(bytes, { to: "string" });
+  } catch {
+    // Fallback: server already decoded Content-Encoding: gzip, buffer is plain JSON
+    text = new TextDecoder().decode(bytes);
   }
-  const total = chunks.reduce((s, c) => s + c.length, 0);
-  const merged = new Uint8Array(total);
-  let offset = 0;
-  for (const c of chunks) { merged.set(c, offset); offset += c.length; }
-  return JSON.parse(new TextDecoder().decode(merged));
+
+  return JSON.parse(text);
 }
 
 export function useReviewData(platform: string): PlatformData {
@@ -130,7 +127,7 @@ export function useReviewData(platform: string): PlatformData {
       try {
         const pSlug = slugPlatform(platform);
         const promises = BRANDS.map(b =>
-          fetchGzip(`/data/sentiments%20data/${pSlug}_${slugBrand(b)}.json.gz`)
+          fetchGzip(`/data/sentiments-data/${pSlug}_${slugBrand(b)}.json.gz`)
         );
         const results = await Promise.all(promises);
         if (cancelled) return;
