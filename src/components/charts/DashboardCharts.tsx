@@ -49,7 +49,7 @@ export function VolumeBar({ data, color, height = 190 }: VolumeBarProps) {
   const chartData = data.map(d => ({ name: d.name, Reviews: d.total }));
   return (
     <ResponsiveContainer width="100%" height={height}>
-      <BarChart data={chartData} margin={{ top: 4, right: 8, left: -10, bottom: 48 }}>
+      <BarChart data={chartData} margin={{ top: 20, right: 8, left: -10, bottom: 48 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
         <XAxis dataKey="name" tick={AXIS_TICK} angle={-40} textAnchor="end" interval={0} />
         <YAxis tick={AXIS_TICK} />
@@ -138,7 +138,7 @@ export function AvgRatingBar({ data, height = 190 }: AvgRatingBarProps) {
     v >= 4 ? SENTIMENT_PALETTE.Positive : v >= 3 ? SENTIMENT_PALETTE.Neutral : SENTIMENT_PALETTE.Negative;
   return (
     <ResponsiveContainer width="100%" height={height}>
-      <BarChart data={chartData} margin={{ top: 4, right: 8, left: -10, bottom: 48 }}>
+      <BarChart data={chartData} margin={{ top: 20, right: 8, left: -10, bottom: 48 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
         <XAxis dataKey="name" tick={AXIS_TICK} angle={-40} textAnchor="end" interval={0} />
         <YAxis tick={AXIS_TICK} domain={[0, 5]} />

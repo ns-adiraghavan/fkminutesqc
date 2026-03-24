@@ -58,6 +58,24 @@ function PlatformContent({ platformId, platformColor }: { platformId: string; pl
 
   return (
     <div className="space-y-5">
+      {/* KPI Summary strip — above the tabs */}
+      <div>
+        <p className="text-[11px] uppercase tracking-widest text-slate-500 mb-2 font-medium">Platform Summary</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[
+            { label: "Total Reviews", value: records.length.toLocaleString() },
+            { label: "Avg Rating", value: (records.reduce((s, r) => s + r.rating, 0) / records.length).toFixed(1) + " ★" },
+            { label: "% Positive", value: Math.round(records.filter(r => r.sentiment === "Positive").length / records.length * 100) + "%" },
+            { label: "Brands Tracked", value: new Set(records.map(r => r.brand)).size.toString() },
+          ].map(kpi => (
+            <div key={kpi.label} className="rounded-xl border border-white/10 bg-slate-900/60 p-4">
+              <p className="text-[11px] uppercase tracking-widest text-slate-500">{kpi.label}</p>
+              <p className="text-2xl font-bold mt-1" style={{ color: platformColor }}>{kpi.value}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Sub-page tab bar */}
       <div className="flex gap-1 bg-slate-900/60 p-1 rounded-xl w-fit border border-white/10">
         {SUB_PAGES.map(p => (
@@ -73,21 +91,6 @@ function PlatformContent({ platformId, platformColor }: { platformId: string; pl
           >
             {p.label}
           </button>
-        ))}
-      </div>
-
-      {/* Summary strip */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        {[
-          { label: "Total Reviews", value: records.length.toLocaleString() },
-          { label: "Avg Rating", value: (records.reduce((s, r) => s + r.rating, 0) / records.length).toFixed(1) + " ★" },
-          { label: "% Positive", value: Math.round(records.filter(r => r.sentiment === "Positive").length / records.length * 100) + "%" },
-          { label: "Brands Tracked", value: new Set(records.map(r => r.brand)).size.toString() },
-        ].map(kpi => (
-          <div key={kpi.label} className="rounded-xl border border-white/10 bg-slate-900/60 p-4">
-            <p className="text-[11px] uppercase tracking-widest text-slate-500">{kpi.label}</p>
-            <p className="text-2xl font-bold mt-1" style={{ color: platformColor }}>{kpi.value}</p>
-          </div>
         ))}
       </div>
 
