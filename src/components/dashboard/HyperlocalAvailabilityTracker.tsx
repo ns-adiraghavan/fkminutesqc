@@ -66,13 +66,13 @@ function buildTableRows(
   }
 
   return Object.values(locationMap).map(({ city, pincode, platforms }) => {
-    const zeptoStatus = platforms["Zepto"] ?? null;
-    const competitorOutOfStock = PLATFORMS.some((p) => p !== "Zepto" && platforms[p] === "out_of_stock");
+    const fkStatus = platforms["Flipkart Minutes"] ?? null;
+    const competitorOutOfStock = PLATFORMS.some((p) => p !== "Flipkart Minutes" && platforms[p] === "out_of_stock");
     return {
       city,
       pincode,
       statuses: platforms as Record<string, AvailStatus>,
-      isIntercept: zeptoStatus === "in_stock" && competitorOutOfStock,
+      isIntercept: fkStatus === "in_stock" && competitorOutOfStock,
     };
   });
 }
@@ -84,6 +84,7 @@ function hasInterceptOpportunity(
 ): boolean {
   return buildTableRows(skuId, availData).some((r) => r.isIntercept);
 }
+
 
 export function HyperlocalAvailabilityTracker({ filters }: Props) {
   const categories = useMemo(
