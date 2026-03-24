@@ -32,21 +32,6 @@ import logoWhite from "@/assets/netscribes-logo-white.png";
 
 const navItems = [
   {
-    title: "Competitive Overview",
-    url: "/dashboard",
-    icon: LayoutDashboard,
-  },
-  {
-    title: "Pricing & Promotions",
-    url: "/dashboard/pricing",
-    icon: Tag,
-  },
-  {
-    title: "Search & Shelf Visibility",
-    url: "/dashboard/search",
-    icon: Search,
-  },
-  {
     title: "Assortment Intelligence",
     url: "/dashboard/assortment",
     icon: Package,
@@ -57,12 +42,27 @@ const navItems = [
     icon: CheckCircle2,
   },
   {
+    title: "Search & Shelf Visibility",
+    url: "/dashboard/search",
+    icon: Search,
+  },
+  {
+    title: "Competitor Pulse",
+    url: "/dashboard",
+    icon: LayoutDashboard,
+  },
+  {
+    title: "Pricing Intelligence",
+    url: "/dashboard/pricing",
+    icon: Tag,
+  },
+  {
     title: "Local Market Intelligence",
     url: "/dashboard/local",
     icon: MapPin,
   },
   {
-    title: "Competitive Events",
+    title: "Competitor Events",
     url: "/dashboard/events",
     icon: Activity,
   },

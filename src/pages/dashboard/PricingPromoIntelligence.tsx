@@ -11,10 +11,10 @@ import { PageControlBar } from "@/components/dashboard/PageControlBar";
 
 const promoRows = [
   { platform: "Blinkit", category: "Snacks & Beverages", type: "Flash Sale", discount: "40%", city: "Bangalore", status: "Active" as const },
-  { platform: "Zepto", category: "Dairy & Eggs", type: "Combo Offer", discount: "15%", city: "Mumbai", status: "Active" as const },
+  { platform: "Flipkart Minutes", category: "Dairy & Eggs", type: "Combo Offer", discount: "15%", city: "Mumbai", status: "Active" as const },
   { platform: "Swiggy Instamart", category: "Personal Care", type: "Buy 2 Get 1", discount: "33%", city: "Delhi NCR", status: "Active" as const },
-  { platform: "BigBasket Now", category: "Staples & Grains", type: "Weekend Deal", discount: "10%", city: "All", status: "Active" as const },
-  { platform: "Zepto", category: "Fruits & Vegetables", type: "Loyalty Discount", discount: "12%", city: "Hyderabad", status: "Ending Soon" as const },
+  { platform: "Zepto", category: "Staples & Grains", type: "Weekend Deal", discount: "10%", city: "All", status: "Active" as const },
+  { platform: "Flipkart Minutes", category: "Fruits & Vegetables", type: "Loyalty Discount", discount: "12%", city: "Hyderabad", status: "Ending Soon" as const },
 ];
 
 const PLATFORM_COLORS = ["hsl(var(--chart-1))", "hsl(var(--chart-2))", "hsl(var(--chart-3))", "hsl(var(--chart-4))"];

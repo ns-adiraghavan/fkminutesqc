@@ -281,7 +281,7 @@ export function CrossPlatformSelectionBenchmarking({ filters }: Props) {
               <AlertTriangle className="h-4 w-4 text-destructive shrink-0" />
               <span className="text-sm font-semibold text-destructive">Actionable Selection Gap Detected</span>
               <span className="text-xs text-destructive/80">
-                — Zepto is not listing this SKU while competitors carry it
+                — Flipkart Minutes is not listing this SKU while competitors carry it
               </span>
             </div>
           )}

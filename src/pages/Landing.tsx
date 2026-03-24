@@ -92,7 +92,7 @@ const Landing = () => {
           <span className="text-primary">Intelligence Platform</span>
         </h1>
         <p className="text-base lg:text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-          Real-time competitive intelligence across pricing, availability, search, and assortment — for Zepto, Blinkit, Swiggy Instamart, and BigBasket Now.
+          Real-time competitive intelligence across pricing, availability, search, and assortment — for Flipkart Minutes, Blinkit, Swiggy Instamart, and Zepto.
         </p>
         <Button size="lg" asChild>
           <Link to="/login">Open Dashboard →</Link>

@@ -195,11 +195,11 @@ const CompetitiveOverview = () => {
       tooltip: "Search Visibility: Zepto Top-10 search presence % from platform_summary. Falls back to cross-platform average if summary data is unavailable.",
     },
     {
-      title: "Selection Coverage",
+      title: "Flipkart Selection Coverage",
       value: skuCoverage.toLocaleString(),
       trend: "neutral" as const,
       status: "low" as const,
-      tooltip: "Selection Coverage: Zepto SKU count from platform_summary. Falls back to distinct listed SKUs from assortment_tracking if unavailable.",
+      tooltip: "Selection Coverage: Flipkart Minutes SKU count from platform_summary. Falls back to distinct listed SKUs from assortment_tracking if unavailable.",
     },
   ];
 
@@ -500,7 +500,7 @@ const CompetitiveOverview = () => {
       <section className="space-y-2">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">Category Price Pressure vs Market</h2>
         <Card className="bg-gradient-card">
-          <CardHeader><CardTitle>Zepto vs Competitor Average Price by Category</CardTitle></CardHeader>
+          <CardHeader><CardTitle>Flipkart Minutes vs Competitor Average Price by Category</CardTitle></CardHeader>
           <CardContent>
             {categoryPricePressure.length === 0 ? (
               <p className="text-sm text-muted-foreground text-center py-6">No data for selected filters.</p>
@@ -515,7 +515,7 @@ const CompetitiveOverview = () => {
                     contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: 8, fontSize: 12 }}
                     formatter={(v: number, name: string) => [`₹${v.toFixed(2)}`, name]}
                   />
-                  <Bar dataKey="zepto_avg_price" name="Zepto Avg Price" fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]} maxBarSize={28} />
+                  <Bar dataKey="zepto_avg_price" name="Flipkart Minutes Avg Price" fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]} maxBarSize={28} />
                   <Bar dataKey="competitor_avg_price" name="Competitor Avg Price" fill="hsl(var(--chart-3))" radius={[4, 4, 0, 0]} maxBarSize={28} />
                 </BarChart>
               </ResponsiveContainer>

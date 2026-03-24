@@ -32,7 +32,7 @@ const KPIS: KPI[] = [
   },
   {
     name: "Avg Price Gap vs Competitors",
-    formula: "(Zepto sale_price − competitor avg sale_price) / competitor avg sale_price × 100",
+    formula: "(Flipkart Minutes sale_price − competitor avg sale_price) / competitor avg sale_price × 100",
     dataset: "price_tracking",
     usedIn: ["Competitive Overview", "Pricing & Promotion Intelligence"],
     module: "Competitive Overview",
