@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, useSearchParams, Link } from "react-router-dom";
 import { useTheme } from "next-themes";
 import { Moon, Sun, ArrowRight, Lock, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
