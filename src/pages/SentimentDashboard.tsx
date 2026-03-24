@@ -92,9 +92,9 @@ function PlatformContent({ platformId, platformColor }: { platformId: string; pl
       </div>
 
       {/* Page content */}
-      {subPage === "topic"    && <TopicPulsePage    topicStats={topicStats}       platformColor={platformColor} />}
-      {subPage === "brand"    && <BrandScorecardPage brandStats={brandStats}      platformColor={platformColor} />}
-      {subPage === "category" && <CategoryLensPage  categoryStats={categoryStats} platformColor={platformColor} />}
+      {subPage === "topic"    && <TopicPulsePage    topicStats={topicStats}       platformColor={platformColor} records={records} />}
+      {subPage === "brand"    && <BrandScorecardPage brandStats={brandStats}      platformColor={platformColor} records={records} />}
+      {subPage === "category" && <CategoryLensPage  categoryStats={categoryStats} platformColor={platformColor} records={records} />}
       {subPage === "insights" && (
         <ReviewIntelligencePage
           platform={platformId}
