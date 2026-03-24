@@ -18,6 +18,7 @@ import CompetitiveEvents from "./pages/dashboard/CompetitiveEvents";
 import AnalyticsTaxonomy from "./pages/AnalyticsTaxonomy";
 import ManageDatasets from "./pages/ManageDatasets";
 import NotFound from "./pages/NotFound";
+import SentimentDashboard from "./pages/SentimentDashboard";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +44,7 @@ const App = () => (
               </Route>
               <Route path="/analytics-taxonomy" element={<AnalyticsTaxonomy />} />
               <Route path="/manage-datasets" element={<ManageDatasets />} />
+              <Route path="/sentiment" element={<SentimentDashboard />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
