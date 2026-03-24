@@ -11,13 +11,15 @@ import logoWhite from "@/assets/netscribes-logo-white.png";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { theme, setTheme } = useTheme();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate("/dashboard");
+    const redirect = searchParams.get("redirect") || "/dashboard";
+    navigate(redirect);
   };
 
   return (
