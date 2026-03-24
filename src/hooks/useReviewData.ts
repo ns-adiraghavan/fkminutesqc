@@ -98,23 +98,19 @@ function computeStats(records: ReviewRecord[], groupKey: keyof ReviewRecord): Gr
 async function fetchGzip(url: string): Promise<ReviewRecord[]> {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
-  const buf = await res.arrayBuffer();
-  const ds = new DecompressionStream("gzip");
-  const writer = ds.writable.getWriter();
-  writer.write(buf);
-  writer.close();
-  const reader = ds.readable.getReader();
-  const chunks: Uint8Array[] = [];
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    chunks.push(value);
+  const buffer = await res.arrayBuffer();
+  const bytes = new Uint8Array(buffer);
+
+  let text: string;
+  try {
+    // Primary: raw gzip bytes on disk → pako decompresses
+    text = pako.inflate(bytes, { to: "string" });
+  } catch {
+    // Fallback: server already decoded Content-Encoding: gzip, buffer is plain JSON
+    text = new TextDecoder().decode(bytes);
   }
-  const total = chunks.reduce((s, c) => s + c.length, 0);
-  const merged = new Uint8Array(total);
-  let offset = 0;
-  for (const c of chunks) { merged.set(c, offset); offset += c.length; }
-  return JSON.parse(new TextDecoder().decode(merged));
+
+  return JSON.parse(text);
 }
 
 export function useReviewData(platform: string): PlatformData {
