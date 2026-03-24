@@ -1,18 +1,100 @@
 // src/components/dashboard/DashboardPages.tsx
-// The four named pages that appear as sub-tabs inside each platform tab:
-//
-//  1. Topic Pulse        — topic-level spread, sentiments, ratings, avg rating
-//  2. Brand Scorecard    — same four charts grouped by brand
-//  3. Category Lens      — same four charts grouped by minor category
-//  4. Review Intelligence— static insights panel (6 tabs × 6 questions)
-//
-// All pages receive already-aggregated stats from the useReviewData hook.
 
+import { useState, useMemo } from "react";
+import { X } from "lucide-react";
 import type { GroupedStats, ReviewRecord } from "@/hooks/useReviewData";
 import {
   VolumeBar, SentimentStackedBar, RatingStackedBar, AvgRatingBar, ChartPanel,
 } from "@/components/charts/DashboardCharts";
-import { useState } from "react";
+
+// ── Slicer helpers ─────────────────────────────────────────────────────────
+
+const TOPIC_NAMES: Record<string, string> = {
+  T01: "Colour", T02: "Customer Service", T03: "Design/Pattern",
+  T04: "Fake/Defective", T05: "Fit/Comfort", T06: "Delivery",
+  T07: "Image vs Reality", T08: "Material/Fabric", T09: "Packaging",
+  T10: "Peripherals", T11: "Product", T12: "Return/Warranty",
+  T13: "Stitching", T14: "Value for Money",
+};
+
+function computeStats(records: ReviewRecord[], groupKey: keyof ReviewRecord): GroupedStats[] {
+  const groups: Record<string, ReviewRecord[]> = {};
+  for (const r of records) {
+    const k = r[groupKey] as string;
+    if (!groups[k]) groups[k] = [];
+    groups[k].push(r);
+  }
+  return Object.entries(groups).map(([name, recs]) => {
+    const total = recs.length;
+    const pos = Math.round((recs.filter(r => r.sentiment === "Positive").length / total) * 100);
+    const neg = Math.round((recs.filter(r => r.sentiment === "Negative").length / total) * 100);
+    const neu = 100 - pos - neg;
+    const r1 = Math.round((recs.filter(r => r.rating === 1).length / total) * 100);
+    const r2 = Math.round((recs.filter(r => r.rating === 2).length / total) * 100);
+    const r3 = Math.round((recs.filter(r => r.rating === 3).length / total) * 100);
+    const r4 = Math.round((recs.filter(r => r.rating === 4).length / total) * 100);
+    const r5 = 100 - r1 - r2 - r3 - r4;
+    const avgRating = parseFloat((recs.reduce((s, r) => s + r.rating, 0) / total).toFixed(1));
+    return { name, total, pos, neu, neg, r1, r2, r3, r4, r5, avgRating };
+  }).sort((a, b) => b.total - a.total);
+}
+
+// ── Slicer pill component ──────────────────────────────────────────────────
+
+interface SlicerProps {
+  label: string;
+  options: string[];
+  selected: string[];
+  onChange: (v: string[]) => void;
+  color: string;
+}
+
+function Slicer({ label, options, selected, onChange, color }: SlicerProps) {
+  const toggle = (v: string) =>
+    onChange(selected.includes(v) ? selected.filter(x => x !== v) : [...selected, v]);
+
+  return (
+    <div className="flex flex-wrap items-center gap-1.5">
+      <span className="text-[10px] uppercase tracking-widest text-slate-500 mr-1 shrink-0">{label}</span>
+      {options.map(opt => {
+        const active = selected.includes(opt);
+        return (
+          <button
+            key={opt}
+            onClick={() => toggle(opt)}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-medium transition-all border ${
+              active
+                ? "border-transparent text-white"
+                : "border-slate-700 text-slate-400 hover:border-slate-500 hover:text-slate-200 bg-slate-900/60"
+            }`}
+            style={active ? { background: color, borderColor: color } : {}}
+          >
+            {opt}
+            {active && <X className="w-2.5 h-2.5 opacity-80" />}
+          </button>
+        );
+      })}
+      {selected.length > 0 && (
+        <button
+          onClick={() => onChange([])}
+          className="text-[10px] text-slate-500 hover:text-slate-300 underline ml-1 transition-colors"
+        >
+          clear
+        </button>
+      )}
+    </div>
+  );
+}
+
+// ── Slicer bar wrapper ─────────────────────────────────────────────────────
+
+function SlicerBar({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex flex-col gap-2 rounded-xl border border-white/8 bg-slate-900/40 px-4 py-3">
+      {children}
+    </div>
+  );
+}
 
 // ── Shared four-chart grid ─────────────────────────────────────────────────
 
@@ -42,47 +124,131 @@ function FourChartGrid({ volumeTitle, data, platformColor }: FourChartGridProps)
 }
 
 // ── Page 1: Topic Pulse ────────────────────────────────────────────────────
+// Slicers: Brand, Category (category_3)
 
-export function TopicPulsePage({ topicStats, platformColor }: {
+export function TopicPulsePage({ topicStats, platformColor, records }: {
   topicStats: GroupedStats[];
   platformColor: string;
+  records: ReviewRecord[];
 }) {
+  const allBrands = useMemo(() => [...new Set(records.map(r => r.brand))].sort(), [records]);
+  const allCategories = useMemo(() => [...new Set(records.map(r => r.category_3))].sort(), [records]);
+
+  const [selBrands, setSelBrands] = useState<string[]>([]);
+  const [selCategories, setSelCategories] = useState<string[]>([]);
+
+  const filteredStats = useMemo(() => {
+    const noBrandFilter = selBrands.length === 0;
+    const noCatFilter = selCategories.length === 0;
+    if (noBrandFilter && noCatFilter) return topicStats;
+
+    const filtered = records.filter(r =>
+      (noBrandFilter || selBrands.includes(r.brand)) &&
+      (noCatFilter || selCategories.includes(r.category_3))
+    );
+    return computeStats(filtered, "topic_id").map(s => ({
+      ...s,
+      name: TOPIC_NAMES[s.name] ?? s.name,
+    }));
+  }, [records, selBrands, selCategories, topicStats]);
+
   return (
-    <FourChartGrid
-      volumeTitle="Topic Volume"
-      data={topicStats}
-      platformColor={platformColor}
-    />
+    <div className="space-y-4">
+      <SlicerBar>
+        <Slicer label="Brand" options={allBrands} selected={selBrands} onChange={setSelBrands} color={platformColor} />
+        <Slicer label="Category" options={allCategories} selected={selCategories} onChange={setSelCategories} color={platformColor} />
+      </SlicerBar>
+      <FourChartGrid volumeTitle="Topic Volume" data={filteredStats} platformColor={platformColor} />
+    </div>
   );
 }
 
 // ── Page 2: Brand Scorecard ────────────────────────────────────────────────
+// Slicers: Topic, Category (category_3)
 
-export function BrandScorecardPage({ brandStats, platformColor }: {
+export function BrandScorecardPage({ brandStats, platformColor, records }: {
   brandStats: GroupedStats[];
   platformColor: string;
+  records: ReviewRecord[];
 }) {
+  const allTopics = useMemo(() => Object.values(TOPIC_NAMES).sort(), []);
+  const allCategories = useMemo(() => [...new Set(records.map(r => r.category_3))].sort(), [records]);
+
+  const [selTopics, setSelTopics] = useState<string[]>([]);
+  const [selCategories, setSelCategories] = useState<string[]>([]);
+
+  // Reverse map topic readable name → topic_id
+  const topicNameToId = useMemo(() => {
+    const m: Record<string, string> = {};
+    Object.entries(TOPIC_NAMES).forEach(([id, name]) => { m[name] = id; });
+    return m;
+  }, []);
+
+  const filteredStats = useMemo(() => {
+    const noTopicFilter = selTopics.length === 0;
+    const noCatFilter = selCategories.length === 0;
+    if (noTopicFilter && noCatFilter) return brandStats;
+
+    const selTopicIds = selTopics.map(t => topicNameToId[t]).filter(Boolean);
+    const filtered = records.filter(r =>
+      (noTopicFilter || selTopicIds.includes(r.topic_id)) &&
+      (noCatFilter || selCategories.includes(r.category_3))
+    );
+    return computeStats(filtered, "brand");
+  }, [records, selTopics, selCategories, brandStats, topicNameToId]);
+
   return (
-    <FourChartGrid
-      volumeTitle="Brand Volume"
-      data={brandStats}
-      platformColor={platformColor}
-    />
+    <div className="space-y-4">
+      <SlicerBar>
+        <Slicer label="Topic" options={allTopics} selected={selTopics} onChange={setSelTopics} color={platformColor} />
+        <Slicer label="Category" options={allCategories} selected={selCategories} onChange={setSelCategories} color={platformColor} />
+      </SlicerBar>
+      <FourChartGrid volumeTitle="Brand Volume" data={filteredStats} platformColor={platformColor} />
+    </div>
   );
 }
 
 // ── Page 3: Category Lens ──────────────────────────────────────────────────
+// Slicers: Brand, Topic
 
-export function CategoryLensPage({ categoryStats, platformColor }: {
+export function CategoryLensPage({ categoryStats, platformColor, records }: {
   categoryStats: GroupedStats[];
   platformColor: string;
+  records: ReviewRecord[];
 }) {
+  const allBrands = useMemo(() => [...new Set(records.map(r => r.brand))].sort(), [records]);
+  const allTopics = useMemo(() => Object.values(TOPIC_NAMES).sort(), []);
+
+  const [selBrands, setSelBrands] = useState<string[]>([]);
+  const [selTopics, setSelTopics] = useState<string[]>([]);
+
+  const topicNameToId = useMemo(() => {
+    const m: Record<string, string> = {};
+    Object.entries(TOPIC_NAMES).forEach(([id, name]) => { m[name] = id; });
+    return m;
+  }, []);
+
+  const filteredStats = useMemo(() => {
+    const noBrandFilter = selBrands.length === 0;
+    const noTopicFilter = selTopics.length === 0;
+    if (noBrandFilter && noTopicFilter) return categoryStats;
+
+    const selTopicIds = selTopics.map(t => topicNameToId[t]).filter(Boolean);
+    const filtered = records.filter(r =>
+      (noBrandFilter || selBrands.includes(r.brand)) &&
+      (noTopicFilter || selTopicIds.includes(r.topic_id))
+    );
+    return computeStats(filtered, "category_3");
+  }, [records, selBrands, selTopics, categoryStats, topicNameToId]);
+
   return (
-    <FourChartGrid
-      volumeTitle="Category Volume"
-      data={categoryStats}
-      platformColor={platformColor}
-    />
+    <div className="space-y-4">
+      <SlicerBar>
+        <Slicer label="Brand" options={allBrands} selected={selBrands} onChange={setSelBrands} color={platformColor} />
+        <Slicer label="Topic" options={allTopics} selected={selTopics} onChange={setSelTopics} color={platformColor} />
+      </SlicerBar>
+      <FourChartGrid volumeTitle="Category Volume" data={filteredStats} platformColor={platformColor} />
+    </div>
   );
 }
 
@@ -157,7 +323,6 @@ const INSIGHT_TABS = [
   },
 ];
 
-// Static pre-generated answers keyed by [tabId][questionIndex]
 function buildStaticAnswers(
   platform: string,
   topicStats: GroupedStats[],
@@ -240,7 +405,6 @@ export function ReviewIntelligencePage({
 
   return (
     <div className="space-y-4">
-      {/* Sub-tab bar */}
       <div className="flex flex-wrap gap-2">
         {INSIGHT_TABS.map(tab => (
           <button
@@ -257,7 +421,6 @@ export function ReviewIntelligencePage({
         ))}
       </div>
 
-      {/* Question grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         {currentInsightTab.questions.map((q, i) => {
           const bullets: string[] = currentAnswers[i] ?? ["Insights will appear once data is loaded."];
