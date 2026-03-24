@@ -32,7 +32,7 @@ import logoWhite from "@/assets/netscribes-logo-white.png";
 
 const navItems = [
   {
-    title: "Assortment Intelligence",
+    title: "Selection Gap Intelligence",
     url: "/dashboard/assortment",
     icon: Package,
   },

@@ -187,7 +187,7 @@ export function buildPageContext(pathname: string): string {
     "/dashboard/search":
       "Search & Digital Shelf Visibility — top-10 presence, elite rank share (top-3), sponsored vs organic share, keyword position tracker, competitive search advantage scores",
     "/dashboard/assortment":
-      "Assortment Intelligence — category coverage by platform, listed vs missing SKUs, platform exclusives",
+      "Selection Gap Intelligence — category coverage by platform, listed vs missing SKUs, platform exclusives",
     "/dashboard/availability":
       "Availability Intelligence — platform reliability, must-have SKU availability, category health, active stockout events, critical stockout impact index",
     "/dashboard/local":
