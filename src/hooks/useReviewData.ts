@@ -1,7 +1,7 @@
 // src/hooks/useReviewData.ts
 
-// Loads all brand files for a given platform from public/data/sentiment data
-// Files expected: public/data/sentiment data/{platform}_{brand}.json.gz
+// Loads all brand files for a given platform from public/data/sentiments-data
+// Files expected: public/data/sentiments-data/{platform}_{brand}.json.gz
 // Each file = array of review records (see schema below)
 //
 // Schema per record:
