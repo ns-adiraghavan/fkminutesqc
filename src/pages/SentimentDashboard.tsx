@@ -159,6 +159,9 @@ export default function SentimentDashboard() {
       <div className="max-w-screen-xl mx-auto px-6 py-6">
         <PlatformContent key={activePlatform} platformId={activePlatform} platformColor={current.color} />
       </div>
+
+      {/* Sentiment Copilot */}
+      <SentimentCopilot platformColor={current.color} platformId={activePlatform} />
     </div>
   );
 }
