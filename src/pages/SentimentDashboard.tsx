@@ -12,9 +12,10 @@ import {
   CategoryLensPage,
   ReviewIntelligencePage,
 } from "@/components/dashboard/DashboardPages";
-import { Loader2, AlertCircle } from "lucide-react";
+import { Loader2, AlertCircle, LogOut } from "lucide-react";
 import logoWhite from "@/assets/netscribes-logo-white.png";
 import { SentimentCopilot } from "@/components/SentimentCopilot";
+import { supabase } from "@/integrations/supabase/client";
 
 // ── Platform config ────────────────────────────────────────────────────────
 
@@ -119,6 +120,11 @@ export default function SentimentDashboard() {
   const [activePlatform, setActivePlatform] = useState("Flipkart");
   const current = PLATFORMS.find(p => p.id === activePlatform)!;
 
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/");
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       {/* Header */}
@@ -133,20 +139,30 @@ export default function SentimentDashboard() {
               <p className="text-xs text-slate-500 mt-0.5">Apparel · Jan 2025 – Jan 2026 · 8 Brands</p>
             </div>
           </div>
-          {/* Platform tabs */}
-          <div className="flex gap-1 bg-slate-800 p-1 rounded-xl">
-            {PLATFORMS.map(p => (
-              <button
-                key={p.id}
-                onClick={() => setActivePlatform(p.id)}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
-                  activePlatform === p.id ? "text-white shadow-md" : "text-slate-400 hover:text-slate-200"
-                }`}
-                style={activePlatform === p.id ? { background: p.color } : {}}
-              >
-                {p.label}
-              </button>
-            ))}
+          {/* Platform tabs + logout */}
+          <div className="flex items-center gap-3">
+            <div className="flex gap-1 bg-slate-800 p-1 rounded-xl">
+              {PLATFORMS.map(p => (
+                <button
+                  key={p.id}
+                  onClick={() => setActivePlatform(p.id)}
+                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
+                    activePlatform === p.id ? "text-white shadow-md" : "text-slate-400 hover:text-slate-200"
+                  }`}
+                  style={activePlatform === p.id ? { background: p.color } : {}}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-all"
+              title="Log out"
+            >
+              <LogOut className="h-4 w-4" />
+              <span className="hidden sm:inline">Logout</span>
+            </button>
           </div>
         </div>
         {/* Platform tagline */}
