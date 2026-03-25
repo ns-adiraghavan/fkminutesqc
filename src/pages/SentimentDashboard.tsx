@@ -141,21 +141,29 @@ export default function SentimentDashboard() {
           </div>
           {/* Platform tabs + logout */}
           <div className="flex items-center gap-3">
-          <div className="flex gap-1 bg-slate-800 p-1 rounded-xl">
-            {PLATFORMS.map(p => (
-              <button
-                key={p.id}
-                onClick={() => setActivePlatform(p.id)}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
-                  activePlatform === p.id ? "text-white shadow-md" : "text-slate-400 hover:text-slate-200"
-                }`}
-                style={activePlatform === p.id ? { background: p.color } : {}}
-              >
-                {p.label}
-              </button>
-            ))}
+            <div className="flex gap-1 bg-slate-800 p-1 rounded-xl">
+              {PLATFORMS.map(p => (
+                <button
+                  key={p.id}
+                  onClick={() => setActivePlatform(p.id)}
+                  className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
+                    activePlatform === p.id ? "text-white shadow-md" : "text-slate-400 hover:text-slate-200"
+                  }`}
+                  style={activePlatform === p.id ? { background: p.color } : {}}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm text-slate-400 hover:text-slate-200 hover:bg-slate-800 transition-all"
+              title="Log out"
+            >
+              <LogOut className="h-4 w-4" />
+              <span className="hidden sm:inline">Logout</span>
+            </button>
           </div>
-        </div>
         {/* Platform tagline */}
         <div className="max-w-screen-xl mx-auto px-6 pb-2">
           <p className="text-xs text-slate-500">{current.tagline}</p>
