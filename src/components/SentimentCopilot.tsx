@@ -14,10 +14,10 @@ interface Message {
 
 const SUGGESTED_QUESTIONS = [
   "Which brand has the worst sentiment?",
-  "What topic drives the most negative reviews?",
-  "How does Flipkart compare to Amazon on ratings?",
-  "Which category has the highest avg rating?",
-  "What are the top complaints on Myntra?",
+  "What are the most common issues in reviews?",
+  "Flipkart vs Amazon — which platform rates higher?",
+  "Which brand has the highest avg rating?",
+  "How are delivery complaints distributed?",
   "Which brand performs best on fit & comfort?",
 ];
 
