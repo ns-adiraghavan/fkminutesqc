@@ -120,6 +120,11 @@ export default function SentimentDashboard() {
   const [activePlatform, setActivePlatform] = useState("Flipkart");
   const current = PLATFORMS.find(p => p.id === activePlatform)!;
 
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/");
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       {/* Header */}
@@ -134,7 +139,8 @@ export default function SentimentDashboard() {
               <p className="text-xs text-slate-500 mt-0.5">Apparel · Jan 2025 – Jan 2026 · 8 Brands</p>
             </div>
           </div>
-          {/* Platform tabs */}
+          {/* Platform tabs + logout */}
+          <div className="flex items-center gap-3">
           <div className="flex gap-1 bg-slate-800 p-1 rounded-xl">
             {PLATFORMS.map(p => (
               <button
