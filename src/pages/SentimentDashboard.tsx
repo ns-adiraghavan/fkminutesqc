@@ -12,9 +12,10 @@ import {
   CategoryLensPage,
   ReviewIntelligencePage,
 } from "@/components/dashboard/DashboardPages";
-import { Loader2, AlertCircle } from "lucide-react";
+import { Loader2, AlertCircle, LogOut } from "lucide-react";
 import logoWhite from "@/assets/netscribes-logo-white.png";
 import { SentimentCopilot } from "@/components/SentimentCopilot";
+import { supabase } from "@/integrations/supabase/client";
 
 // ── Platform config ────────────────────────────────────────────────────────
 
