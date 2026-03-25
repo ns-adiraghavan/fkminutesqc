@@ -164,6 +164,7 @@ export default function SentimentDashboard() {
               <span className="hidden sm:inline">Logout</span>
             </button>
           </div>
+        </div>
         {/* Platform tagline */}
         <div className="max-w-screen-xl mx-auto px-6 pb-2">
           <p className="text-xs text-slate-500">{current.tagline}</p>
