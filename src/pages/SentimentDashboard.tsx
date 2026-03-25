@@ -14,6 +14,7 @@ import {
 } from "@/components/dashboard/DashboardPages";
 import { Loader2, AlertCircle } from "lucide-react";
 import logoWhite from "@/assets/netscribes-logo-white.png";
+import { SentimentCopilot } from "@/components/SentimentCopilot";
 
 // ── Platform config ────────────────────────────────────────────────────────
 
